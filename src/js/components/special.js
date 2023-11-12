@@ -41,7 +41,7 @@ export default class Special {
         const angle = Math.random() * 2 * Math.PI;
 
         const minDistance = 0.4 * circleRadius; // Adjust as needed
-        const maxDistance = 0.9 * circleRadius;
+        const maxDistance = 0.7 * circleRadius;
         const spawnDistance = minDistance + Math.random() * (maxDistance - minDistance);
 
         const x = circleContainer.offsetWidth / 2 + spawnDistance * Math.cos(angle) - this.fuelStation.offsetWidth / 2;

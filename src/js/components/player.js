@@ -2,7 +2,7 @@ export default class Player {
     constructor() {
         this.player = document.querySelector('.player');
         this.container = document.querySelector('.sonar__container');
-        this.speed = 10;
+        this.speed = 15;
 
         const containerRadius = this.container.clientWidth / 2;
         this.playerX = containerRadius - this.player.clientWidth / 2;

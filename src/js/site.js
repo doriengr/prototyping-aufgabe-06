@@ -70,15 +70,15 @@ function updateFuelStation(fuelCollisionStartTime) {
     const currentCollisionDuration = currentTime - fuelCollisionStartTime;
 
     if (! isFuelUpdateTriggered) {
-        if (currentCollisionDuration >= 3000 && currentTime - lastFuelUpdateTime >= 3000) {
-            const powerUpsEarned = Math.floor(currentCollisionDuration / 3000);
+        if (currentCollisionDuration >= 500 && currentTime - lastFuelUpdateTime >= 500) {
+            const powerUpsEarned = Math.floor(currentCollisionDuration / 500);
 
             special.updateFuelCount(powerUpsEarned);
             isFuelUpdateTriggered = true;
             lastFuelUpdateTime = currentTime;
         }
     } else {
-        if (currentTime - lastFuelUpdateTime >= 3000) {
+        if (currentTime - lastFuelUpdateTime >= 500) {
             isFuelUpdateTriggered = false;
         }
     }

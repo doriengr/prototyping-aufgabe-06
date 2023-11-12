@@ -2,17 +2,18 @@ export default class Enemies {
     constructor() {
         this.enemiesContainer = document.querySelector(".ship__container");
         this.enemies = [];
-        this.spawnInterval = 2000;
-        this.livesCount = 3;
+        this.spawnInterval = 2750;
+        this.livesCount = 5;
         this.livesWrapper = document.querySelector('.lives___wrapper');
         this.gameLost = false;
         this.interval = null;
+
+        this.enemiesCount = 1;
     }
 
     initEnemies() {
         this.animate();
 
-        // Set up interval to spawn new enemies every 5 seconds
         this.interval = setInterval(() => {
             this.generateRandomElements();
         }, this.spawnInterval);
@@ -36,11 +37,16 @@ export default class Enemies {
 
         this.enemiesContainer.appendChild(enemy);
 
-        const speedX = (circleContainer.offsetWidth / 2 - x) / 500;
-        const speedY = (circleContainer.offsetHeight / 2 - y) / 500;
+        const speedIncreaseFactor = 0.05;
+        const maxSpeed = 2;
+
+        const speedFactor = 1 + Math.min(this.enemiesCount * speedIncreaseFactor, maxSpeed);
+        const speedX = (circleContainer.offsetWidth / 2 - x) / 500 * speedFactor;
+        const speedY = (circleContainer.offsetHeight / 2 - y) / 500 * speedFactor;
 
         this.playSoundOnCreate();
 
+        this.enemiesCount++;
         this.enemies.push({
             element: enemy,
             speedX: speedX,
@@ -64,7 +70,7 @@ export default class Enemies {
 
             const distanceFromCenter = Math.sqrt((x - circleContainerWidth / 2) ** 2 + (y - circleContainerHeight / 2) ** 2);
 
-            if (distanceFromCenter < 10) {
+            if (distanceFromCenter < 28) {
                 this.removeEnemy(enemy);
                 this.reduceOneLive();
             }

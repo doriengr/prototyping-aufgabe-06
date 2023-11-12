@@ -144,7 +144,7 @@
 
 .base {
     background: rgb(221,27,27);
-    background: radial-gradient(circle, rgba(221,27,27,1) 0%, rgba(224,136,64,0) 6%);
+    background: radial-gradient(circle, rgba(221,27,27,1) 0%, rgba(224,136,64,0) 8%);
     width: 100%;
     height:100%;
     border-radius: 100%;
