@@ -1,0 +1,160 @@
+@import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&amp;display=swap");
+@import url("https://fonts.googleapis.com/css2?family=VT323&amp;display=swap");
+
+html,
+body {
+    --colors-bg--300: #1e1e2b;
+    --colors-bg--500: #17171f;
+    --colors-primary--200: #ffea00;
+    --colors-primary--300: #ffd000;
+    --colors-primary--500: #ffcc00;
+    --colors-primary--600: #e6b800;
+    --colors-primary--700: #997a00;
+    --colors-primary--800: #664c00;
+    --colors-primary--900: #4d3a00;
+    --colors-on_bg--500: var(--colors-primary--500);
+    --colors-on_tertiary--500: var(--colors-bg--300);
+    --colors-on_primary--500: var(--colors-primary--200);
+    --fonts-primary: "Rajdhani", sans-serif;
+    --fonts-secondary: "VT323", monospace;
+    --ui-glow: 0 0 5px var(--colors-primary--500);
+    --ui-glow-borders--500: 0 0 3px var(--colors-primary--500);
+    --ui-glow-color: currentcolor;
+    --ui-glow-text: -9px -6px 40px var(--ui-glow-color);
+    --ui-glow-text--dimmed: -9px -6px 40px var(--ui-glow-color);
+    --ui-elevation--1: 2px 2px 0 rgba(0, 0, 0, 0.8);
+    --ui-notch-amount: 1rem;
+    --ui-notch-hypotenuse: 22.627416px;
+    --ui-notch-path: polygon(
+            0 0,
+            100% 0,
+            100% calc(100% - var(--ui-notch-amount) + 2px),
+            calc(100% - var(--ui-notch-amount) + 2px) 100%,
+            0 100%
+    );
+
+    background-color: var(--colors-bg--500);
+    background-image: radial-gradient(ellipse at 33% 10%, #423915 0%, transparent 75%);
+    background-repeat: no-repeat;
+    color: var(--colors-on_bg--500);
+    font-family: var(--fonts-primary);
+    max-height: 100vh;
+    overflow: hidden;
+}
+
+
+body {
+    padding: 0 1rem;
+    height: 100vh;
+    max-width: 90em;
+    margin: auto;
+}
+
+header {
+    align-items: center;
+    display: flex;
+    grid-area: header;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    padding: 1rem 0 0.5rem 0;
+}
+
+header::after {
+    background-color: var(--colors-primary--500);
+    box-shadow: var(--ui-glow);
+    bottom: 0;
+    content: "";
+    height: 2px;
+    position: absolute;
+    left: 0;
+    width: 100%;
+}
+
+header > p {
+    padding: 0.5rem;
+    font-family: var(--fonts-secondary);
+    font-size: 1.25rem;
+    letter-spacing: 0.1rem;
+    text-shadow: var(--ui-glow-text);
+    text-transform: uppercase;
+}
+
+main {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-areas: "a main main main b";
+    grid-template-columns: repeat(5, 1fr);
+    height: calc(100% - 5.25rem);
+}
+
+.column__one {
+    grid-area: a;
+    height: 100%;
+}
+
+.column__two {
+    grid-area: main;
+}
+
+.column__three {
+    grid-area: b;
+    height: 100%;
+}
+
+.slate__title {
+    font-size: 1.125rem;
+    margin: 0;
+}
+
+.message__box {
+    background-color: var(--colors-bg--300);
+    border: 2px solid var(--colors-primary--600);
+    clip-path: var(--ui-notch-path);
+    margin-top: 1rem;
+}
+
+.message__body {
+    padding: 0.75rem;
+    padding-bottom: var(--ui-notch-amount);
+}
+
+.message__box::before {
+    background-color: var(--colors-primary--600);
+    bottom: 5px;
+    content: "";
+    display: block;
+    height: 3px; /* bigger to compensate transform */
+    position: absolute;
+    right: -6px;
+    top: auto;
+    transform: rotate(-45deg);
+    width: var(--ui-notch-hypotenuse);
+    z-index: 100;
+}
+
+.main__header {
+    padding-bottom: 1rem;
+    text-align: center;
+}
+
+.headline__kicker {
+    font-family: var(--fonts-secondary);
+}
+
+h1 {
+    letter-spacing: 0.035em;
+    text-shadow: var(--ui-glow-text--dimmed);
+    text-transform: uppercase;
+    font-size: x-large;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.3rem;
+}
+
+h4 {
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+}
+

@@ -1,0 +1,39 @@
+.lives___wrapper {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.live {
+    width: 2rem;
+}
+
+.fuel__wrapper {
+     list-style: none;
+     margin: 0;
+     padding: 0;
+ }
+
+.fuel__item {
+    width: 100%;
+    height: 4rem;
+    background: rgb(48,93,7);
+    background: radial-gradient(circle, rgba(48,93,7,1) 0%, rgba(83,175,0,0) 100%);
+    margin-top: 0.5rem;
+}
+
+.fuel__item.empty {
+    border: 2px solid rgba(48,93,7,1);
+    background: transparent;
+}
+
+.fuel__station {
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+    background: rgb(107,223,2);
+    background: radial-gradient(circle, rgba(107,223,2,1) 0%, rgba(48,93,7,1) 100%);
+    border-radius: 100%;
+}

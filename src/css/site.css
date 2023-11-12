@@ -1,0 +1,6 @@
+@import './components/reset.css';
+@import './components/general.css';
+@import './components/main-display.css';
+@import './components/player.css';
+@import './components/ships.css';
+@import './components/lives.css';

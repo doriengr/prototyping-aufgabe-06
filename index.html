@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="src/css/site.css">
+</head>
+    <body>
+        <header>
+            <p>Airspace monitoring System: Planet R10snq3</p>
+        </header>
+        <main>
+            <div class="column__one">
+                <div class="message__box">
+                    <div class="message__body">
+                        <h4>Mission</h4>
+                        <p>The enemies are trying to invade your planet's airspace. Try to eliminate the enemies before they reach your base station in the center. Collide with your enemies to eliminate them</p>
+                    </div>
+                </div>
+                <div class="message__box">
+                    <div class="message__body">
+                        <h4>Enemies eliminated:</h4>
+                        <p class="eliminated__count">0</p>
+                    </div>
+                </div>
+                <div class="message__box">
+                    <div class="message__body">
+                        <h4>Number of lives:</h4>
+                        <ul class="lives___wrapper">
+                            <li class="live">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                                </svg>
+                            </li>
+                            <li class="live">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                                </svg>
+                            </li>
+                            <li class="live">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                                </svg>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="column__two">
+                <div class="main__header">
+                    <span class="headline__kicker">Mission_Nr: ffg19287DRAF_476172382023</span>
+                    <h1><span>#</span>Sonar of the airspace</h1>
+                </div>
+                <div class="sonar__container">
+                    <div class="player"></div>
+                    <div class="base"></div>
+                    <div class="fuel__station"></div>
+
+                    <div class="distance">
+                        <div class="distance__circle"></div>
+                        <div class="distance__circle"></div>
+                        <div class="distance__circle"></div>
+                        <div class="distance__circle"></div>
+                        <div class="distance__circle"></div>
+                    </div>
+
+                    <div class="degree">
+                        <div class="degree__line"></div>
+                        <div class="degree__line"></div>
+                        <div class="degree__line"></div>
+                        <div class="degree__line"></div>
+                        <div class="degree__line"></div>
+                        <div class="degree__line"></div>
+                        <div class="degree__line"></div>
+                        <div class="degree__line"></div>
+                        <div class="degree__line"></div>
+                        <div class="degree__line"></div>
+                        <div class="degree__line"></div>
+                        <div class="degree__line"></div>
+                    </div>
+
+                    <div class="rotary"></div>
+
+                    <div class="ship__container"></div>
+                </div>
+            </div>
+            <div class="column__three">
+                <div class="message__box">
+                    <div class="message__body">
+                        <h4>Fuel indicator</h4>
+                        <ul class="fuel__wrapper">
+                            <li class="fuel__item"></li>
+                            <li class="fuel__item"></li>
+                            <li class="fuel__item"></li>
+                            <li class="fuel__item"></li>
+                            <li class="fuel__item"></li>
+                            <li class="fuel__item"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <script type="module" src="src/js/components/special.js"></script>
+        <script type="module" src="src/js/components/ships.js"></script>
+        <script type="module" src="src/js/components/player.js"></script>
+        <script type="module" src="src/js/site.js"></script>
+    </body>
+</html>
