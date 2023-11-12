@@ -8,6 +8,7 @@ export default class Special {
         this.emptyFuel = 0;
 
         this.timerPaused = false;
+        this.gameLost = false;
     }
 
     initSpecial() {
@@ -16,15 +17,20 @@ export default class Special {
     }
 
     updateTimer() {
-        if (this.timerPaused) return;
+        if (this.timerPaused || this.gameLost) return;
+
 
         this.fuelCount--;
-        console.log(this.fuelCount);
         const currentFuel = this.fuelElement.children;
 
         if (this.fuelCount % 10 === 0 && currentFuel.length > 0 && this.emptyFuel <= 5) {
             currentFuel[this.emptyFuel].classList.add('empty');
+            this.playSoundForEmptyBattery();
             this.emptyFuel++;
+        }
+
+        if (this.emptyFuel === 6) {
+            this.lost();
         }
     }
 
@@ -46,7 +52,7 @@ export default class Special {
     }
 
     updateFuelCount() {
-        if (this.fuelCount >= 51) return;
+        if (this.fuelCount >= 51 || this.gameLost) return;
 
         this.fuelCount = this.fuelCount + 10;
         this.emptyFuel--;
@@ -56,5 +62,27 @@ export default class Special {
         if (emptyFuels.length === 0) return;
 
         emptyFuels[emptyFuels.length - 1].classList.remove('empty');
+        this.playSoundForUploadBattery();
+    }
+
+    playSoundForEmptyBattery() {
+        if (this.gameLost) return;
+
+        const audio = new Audio('/assets/low-battery.mp3');
+        audio.volume = 0.2;
+        audio.play();
+    }
+
+    playSoundForUploadBattery() {
+        if (this.gameLost) return;
+
+        const audio = new Audio('/assets/upload-battery.wav');
+        audio.volume = 0.2;
+        audio.play();
+    }
+
+    lost() {
+        this.gameLost = true;
+        clearInterval(this.timer);
     }
 }

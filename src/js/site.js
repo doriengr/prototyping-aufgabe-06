@@ -9,10 +9,13 @@ const special = new Special();
 let eliminatedCount = 0;
 let countElement = document.querySelector('.eliminated__count');
 
-
 let fuelCollisionStartTime = null;
 let isFuelUpdateTriggered = false;
 let lastFuelUpdateTime = 0;
+
+let gameLost = false;
+let startButton = document.querySelector('.start__button');
+let soundPlaying = false;
 
 init();
 
@@ -34,6 +37,7 @@ function checkCollision() {
             eliminatedCount++;
             countElement.innerHTML = eliminatedCount;
             fuelCollisionStartTime = null;
+            enemies.playSoundOnRemoved();
         }
     });
 
@@ -80,17 +84,47 @@ function updateFuelStation(fuelCollisionStartTime) {
     }
 }
 
+function checkingForGameLost() {
+    if (! enemies.gameLost && ! special.gameLost) return;
+
+    gameLost = true;
+    special.lost();
+    enemies.lost();
+    const lost = document.querySelector('.lost');
+    lost.classList.add('lost--show');
+    if (! soundPlaying) {
+        playLostSound();
+    }
+}
+
+function playSound() {
+    const audio = new Audio('/assets/atmo.wav');
+    audio.loop = true;
+    audio.play();
+}
+
+function playLostSound() {
+    const audio = new Audio('/assets/lost.wav');
+    audio.play();
+    soundPlaying = true;
+}
 
 function init() {
-    player.initPlayer();
-    enemies.initEnemies();
-    special.initSpecial();
+    startButton.addEventListener('click', function() {
+        let startScreen = document.querySelector('.start');
+        startScreen.classList.remove('start--show');
+        player.initPlayer();
+        enemies.initEnemies();
+        special.initSpecial();
+        playSound();
 
-    function loop() {
-        checkCollision();
-        checkFuelLoading();
-        requestAnimationFrame(loop);
-    }
+        function loop() {
+            checkCollision();
+            checkFuelLoading();
+            checkingForGameLost();
+            requestAnimationFrame(loop);
+        }
 
-    loop();
+        loop();
+    });
 }

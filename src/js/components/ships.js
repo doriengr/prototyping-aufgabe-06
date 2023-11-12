@@ -5,13 +5,15 @@ export default class Enemies {
         this.spawnInterval = 2000;
         this.livesCount = 3;
         this.livesWrapper = document.querySelector('.lives___wrapper');
+        this.gameLost = false;
+        this.interval = null;
     }
 
     initEnemies() {
         this.animate();
 
         // Set up interval to spawn new enemies every 5 seconds
-        setInterval(() => {
+        this.interval = setInterval(() => {
             this.generateRandomElements();
         }, this.spawnInterval);
     }
@@ -36,6 +38,8 @@ export default class Enemies {
 
         const speedX = (circleContainer.offsetWidth / 2 - x) / 500;
         const speedY = (circleContainer.offsetHeight / 2 - y) / 500;
+
+        this.playSoundOnCreate();
 
         this.enemies.push({
             element: enemy,
@@ -80,17 +84,44 @@ export default class Enemies {
     reduceOneLive() {
         const currentIcons = this.livesWrapper.children;
 
-        if (this.livesCount > 0) {
+        if (this.livesCount > 1) {
             this.livesCount--;
+            this.playSoundOnLiveRemoved();
 
             if (currentIcons.length > 0) {
                 this.livesWrapper.removeChild(currentIcons[currentIcons.length - 1]);
             }
+        } else {
+            this.lost();
+            this.livesCount--;
+            this.livesWrapper.removeChild(currentIcons[currentIcons.length - 1]);
         }
+    }
+
+    lost() {
+        this.gameLost = true;
+        clearInterval(this.interval);
+        this.enemies = [];
     }
 
     removeEnemy(enemy) {
         enemy.element.remove();
         this.enemies = this.enemies.filter(e => e !== enemy);
+    }
+
+    playSoundOnCreate() {
+        const audio = new Audio('/assets/ship.wav');
+        audio.volume = 0.1;
+        audio.play();
+    }
+
+    playSoundOnRemoved() {
+        const audio = new Audio('/assets/killed-enemy.wav');
+        audio.play();
+    }
+
+    playSoundOnLiveRemoved() {
+        const audio = new Audio('/assets/lost-one-heart.wav');
+        audio.play();
     }
 }
